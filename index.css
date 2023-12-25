@@ -4,15 +4,15 @@
 }
 html,body{ 
     position: absolute;
-    display: flex;          /* to align left and right div side by side */  
+    display: flex;           
     height: 100%; 
     width: 100%;
     overflow-x: hidden;
-    min-height: 100vh;                  /* vh(viewport height) is for height and vw(viewport width) is for width */
+    min-height: 100vh;                  
 }
 #right-div{
     position: relative;
-    height: 100vh;               /* to set the div height to that of body...can be also done by setting 'position:absolute and min-height:100%' */
+    height: 100vh;               
     min-height: 100vh;
     width: 40vw;
     background-color: rgb(238, 238, 238);
