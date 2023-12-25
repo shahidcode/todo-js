@@ -11,8 +11,8 @@ rightPane.setAttribute('id','right-div');
 document.body.appendChild(leftPane);
 document.body.appendChild(rightPane);
 
-var rightDivId = document.getElementById('right-div');              // rightPane    
-var leftDivId = document.getElementById('left-div');                // leftPane
+var rightDivId = document.getElementById('right-div');                 
+var leftDivId = document.getElementById('left-div');                
 
 // text area
 var textArea = document.createElement('textarea');
@@ -47,16 +47,16 @@ function leftDivText(){
     leftDivId.appendChild(paragraph);
 }
 
-var flagForEdit = true;         // when we click edit button, change text and hit enter, the below function gets executed and adds new div element which we don't want
+var flagForEdit = true;         
 
 function textAreaFunctionality(){
     textArea.addEventListener( 'keyup',function (event){
         if( !(window.event.keyCode === 32 )){
             if( window.event.keyCode === 13 ){
-                if( textArea.value.trim()!=="" ){                   // if textArea value is not empty after trimming spaces
+                if( textArea.value.trim()!=="" ){                   
                     if( flagForEdit!==false ){
                     addTaskToLeftDiv(textArea.value);
-                    textArea.value = "";                            // updating textArea again to 'empty' so it won't print the previous text into next text
+                    textArea.value = "";                            
                     }
                 }
             }
@@ -96,11 +96,11 @@ function addTaskToLeftDiv( textArea_value ){
     leftDivId.appendChild(tasksDiv);
 
 
-    checkbox.addEventListener('click', function(){             // when checkbox is clicked
-       if(checkbox.checked){                                   //returns 'true' if checkbox is checked, else 'false' if checkbox is unchecked/not checked.
+    checkbox.addEventListener('click', function(){             
+       if(checkbox.checked){                                   
         par.style.textDecoration = "line-through yellow";
         }
-        else{                                                  // when checkbox is unchecked line-through should be removed.
+        else{                                                  
             par.style.textDecoration = "none";
         }
 
@@ -137,7 +137,7 @@ function addTaskToLeftDiv( textArea_value ){
         if( !(window.event.keyCode === 32 )){
             if( window.event.keyCode === 13 ){
                 if( textArea.value.trim()!=="" ){ 
-                    elementtobeedited.children[0].innerHTML = event.target.value;   // or textArea.value;
+                    elementtobeedited.children[0].innerHTML = event.target.value;   
                     todos[indexOfTodoValue] = event.target.value;
                     localStorage.setItem("fullTasks", JSON.stringify( todos ) );
                     // console.log(JSON.stringify(todos));
@@ -151,7 +151,7 @@ function addTaskToLeftDiv( textArea_value ){
 
     icons2.addEventListener('click', function(event){               // delete a task
         var indexToBeDeleted = Array.from(event.target.parentElement.parentElement.children).indexOf(icons2.parentElement)-2;
-        todos.splice( indexToBeDeleted,1 );         // to delete element from specific position.
+        todos.splice( indexToBeDeleted,1 );         
         icons2.parentElement.remove();
         localStorage.setItem("fullTasks", JSON.stringify( todos ) );
     });
@@ -169,7 +169,7 @@ window.addEventListener('load',function(event){
     localStr = JSON.parse(localStorage.getItem("fullTasks"));
 
     if( localStr !==null ){
-            localStr.forEach( function(data,index){         // index and data should be in same sequence          
+            localStr.forEach( function(data,index){                 
 
             addTaskToLeftDiv(data);
 
